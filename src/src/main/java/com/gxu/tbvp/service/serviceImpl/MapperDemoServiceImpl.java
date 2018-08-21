@@ -1,5 +1,6 @@
 package com.gxu.tbvp.service.serviceImpl;
 
+import com.gxu.tbvp.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.gxu.tbvp.domain.Mapperdemo;
