@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gxu.tbvp.mapper.MapperdemoMapper" >
+  <resultMap id="BaseResultMap" type="com.gxu.tbvp.domain.Mapperdemo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="user_name" property="userName" jdbcType="VARCHAR" />
+    <id column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
+    <result column="user_delete" property="userDelete" jdbcType="INTEGER" />
+    <result column="user_image" property="userImage" jdbcType="VARCHAR" />
+    <result column="user_created_time" property="userCreatedTime" jdbcType="TIMESTAMP" />
+    <result column="user_deleted_time" property="userDeletedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+</mapper>

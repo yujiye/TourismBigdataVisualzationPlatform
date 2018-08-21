@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gxu.tbvp.mapper.AccessrecordMapper" >
+  <resultMap id="BaseResultMap" type="com.gxu.tbvp.domain.Accessrecord" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="produceId" property="produceid" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="buy_tool" property="buyTool" jdbcType="INTEGER" />
+    <result column="agentId" property="agentid" jdbcType="INTEGER" />
+    <result column="buy_way" property="buyWay" jdbcType="INTEGER" />
+    <result column="buy_time" property="buyTime" jdbcType="TIMESTAMP" />
+    <result column="buy_price" property="buyPrice" jdbcType="DOUBLE" />
+    <result column="count" property="count" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>

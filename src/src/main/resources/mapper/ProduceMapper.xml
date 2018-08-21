@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gxu.tbvp.mapper.ProduceMapper" >
+  <resultMap id="BaseResultMap" type="com.gxu.tbvp.domain.Produce" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="produceId" property="produceid" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="scenics" property="scenics" jdbcType="VARCHAR" />
+    <result column="waySId" property="waysid" jdbcType="VARCHAR" />
+    <result column="totalAmount" property="totalamount" jdbcType="DOUBLE" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="Images" property="images" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="End_time" property="endTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+</mapper>

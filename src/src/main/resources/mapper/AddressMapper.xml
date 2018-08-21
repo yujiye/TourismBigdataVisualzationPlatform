@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gxu.tbvp.mapper.AddressMapper" >
+  <resultMap id="BaseResultMap" type="com.gxu.tbvp.domain.Address" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="addressId" property="addressid" jdbcType="INTEGER" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="deati" property="deati" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

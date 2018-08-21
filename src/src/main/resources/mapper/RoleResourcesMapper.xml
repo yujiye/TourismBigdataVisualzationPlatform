@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gxu.tbvp.mapper.RoleResourcesMapper" >
+  <resultMap id="BaseResultMap" type="com.gxu.tbvp.domain.RoleResources" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="roleId" property="roleid" jdbcType="INTEGER" />
+    <id column="resourcesId" property="resourcesid" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>
