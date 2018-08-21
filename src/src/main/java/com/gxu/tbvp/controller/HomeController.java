@@ -26,6 +26,7 @@ public class HomeController {
     public String login(){
         return "login";
     }
+
     @RequestMapping(value="/login",method=RequestMethod.POST)
     public String login(HttpServletRequest request, User user, Model model){
         if (StringUtils.isEmpty(user.getUsername()) || StringUtils.isEmpty(user.getPassword())) {
@@ -46,15 +47,5 @@ public class HomeController {
             request.setAttribute("msg", "用户或密码不正确！");
             return "login";
         }
-    }
-
-    @RequestMapping("/resourcesPage")
-    public String resourcesPage(){
-        return "resources/resources";
-    }
-
-    @RequestMapping("/403")
-    public String forbidden(){
-        return "403";
     }
 }
