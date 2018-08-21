@@ -53,4 +53,9 @@ public class HomeController {
     public String resourcesPage(){
         return "resources/resources";
     }
+
+    @RequestMapping("/403")
+    public String forbidden(){
+        return "403";
+    }
 }

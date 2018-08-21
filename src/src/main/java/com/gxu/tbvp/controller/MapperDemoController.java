@@ -22,12 +22,6 @@ public class MapperDemoController {
 
 //    @Autowired
 //    private Sid sid;
-
-    @RequestMapping(value="/login",method= RequestMethod.GET)
-    public String login(){
-        return "login";
-    }
-
     @RequestMapping("/saveMapperDemo")
     public SelfJSONResult saveMapperDemo() throws Exception {
 //        String userId = sid.nextShort();
