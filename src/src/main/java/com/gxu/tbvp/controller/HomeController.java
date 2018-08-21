@@ -48,4 +48,9 @@ public class HomeController {
             return "login";
         }
     }
+
+    @RequestMapping("/resourcesPage")
+    public String resourcesPage(){
+        return "resources/resources";
+    }
 }
