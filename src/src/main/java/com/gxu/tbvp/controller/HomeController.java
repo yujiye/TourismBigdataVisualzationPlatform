@@ -47,10 +47,6 @@ public class HomeController {
             return "login";
         }
     }
-    @RequestMapping(value={"/usersPage",""})
-    public String usersPage(){
-        return "user/users";
-    }
 
     @RequestMapping("/rolesPage")
     public String rolesPage(){
