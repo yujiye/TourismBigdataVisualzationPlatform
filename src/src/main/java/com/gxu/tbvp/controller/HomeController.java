@@ -26,6 +26,7 @@ public class HomeController {
     public String login(){
         return "login";
     }
+
     @RequestMapping(value="/login",method=RequestMethod.POST)
     public String login(HttpServletRequest request, User user, Model model){
         if (StringUtils.isEmpty(user.getUsername()) || StringUtils.isEmpty(user.getPassword())) {
