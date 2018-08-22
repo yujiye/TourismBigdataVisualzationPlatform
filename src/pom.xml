@@ -112,12 +112,12 @@
             <version>2.2.0</version>
         </dependency>
 
-        <!-- spring-boot-devtools 实现热部署 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
-        </dependency>
+        <!--&lt;!&ndash; spring-boot-devtools 实现热部署 &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-devtools</artifactId>-->
+            <!--<optional>true</optional>-->
+        <!--</dependency>-->
 
         <!-- shiro spring. -->
         <dependency>

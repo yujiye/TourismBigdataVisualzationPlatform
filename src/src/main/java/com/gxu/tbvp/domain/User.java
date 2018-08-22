@@ -1,9 +1,11 @@
 package com.gxu.tbvp.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
-public class User {
+public class User implements Serializable {
+
     /**
      * 用户旅客id
      */

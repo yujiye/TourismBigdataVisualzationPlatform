@@ -3,6 +3,7 @@ package com.gxu.tbvp.controller;
 
 
 import com.gxu.tbvp.domain.User;
+import com.gxu.tbvp.utils.PasswordHelper;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.LockedAccountException;
@@ -38,6 +39,8 @@ public class HomeController {
         UsernamePasswordToken token=new UsernamePasswordToken(user.getUsername(),user.getPassword());
         try {
             subject.login(token);
+            User user1 = (User) SecurityUtils.getSubject().getPrincipal();
+            System.out.print((User) SecurityUtils.getSubject().getPrincipal());
             return "redirect:usersPage";
         }catch (LockedAccountException lae) {
             token.clear();
@@ -52,7 +55,7 @@ public class HomeController {
 
     @RequestMapping(value={"/usersPage",""})
     public String usersPage(){
-        return "user/users";
+        return "index";
     }
 
     @RequestMapping("/rolesPage")
