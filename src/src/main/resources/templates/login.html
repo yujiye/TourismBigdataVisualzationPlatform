@@ -36,7 +36,7 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">帐户登录</p>
-
+    <span th:text="${msg}" style="color: #9f191f"></span>
     <form th:action="@{/login}" method="post">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" name="Username" placeholder="用户名">
@@ -72,7 +72,7 @@
     <!-- /.social-auth-links -->
 
     <a href="#">忘记密码？</a><br>
-    <a href="register.html" class="text-center">注册新会员</a>
+    <a th:href="@{/addUser}" class="text-center" >注册新会员</a>
 
   </div>
   <!-- /.login-box-body -->
