@@ -5,7 +5,6 @@ import java.util.Date;
 import javax.persistence.*;
 
 public class User implements Serializable {
-
     /**
      * 用户旅客id
      */
@@ -64,6 +63,11 @@ public class User implements Serializable {
      * 账户是否能用
      */
     private Integer enable;
+
+    /**
+     * 省份
+     */
+    private String province;
 
     /**
      * 获取用户旅客id
@@ -271,5 +275,23 @@ public class User implements Serializable {
      */
     public void setEnable(Integer enable) {
         this.enable = enable;
+    }
+
+    /**
+     * 获取省份
+     *
+     * @return province - 省份
+     */
+    public String getProvince() {
+        return province;
+    }
+
+    /**
+     * 设置省份
+     *
+     * @param province 省份
+     */
+    public void setProvince(String province) {
+        this.province = province;
     }
 }

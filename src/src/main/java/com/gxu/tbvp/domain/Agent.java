@@ -1,9 +1,10 @@
 package com.gxu.tbvp.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
-public class Agent {
+public class Agent implements Serializable {
     /**
      * 代理ID
      */

@@ -1,9 +1,10 @@
 package com.gxu.tbvp.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Table(name = "role_resources")
-public class RoleResources {
+public class RoleResources implements Serializable {
     @Id
     @Column(name = "roleId")
     private Integer roleid;

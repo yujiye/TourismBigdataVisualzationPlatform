@@ -30,8 +30,5 @@
 
 
         <table tableName="user"></table>
-        <table tableName="agent"></table>
-        <table tableName="manager"></table>
-        <table tableName="super_manager"></table>
     </context>
 </generatorConfiguration>

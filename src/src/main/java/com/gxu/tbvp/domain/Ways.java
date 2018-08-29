@@ -1,8 +1,9 @@
 package com.gxu.tbvp.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-public class Ways {
+public class Ways implements Serializable {
     @Id
     private Integer id;
 

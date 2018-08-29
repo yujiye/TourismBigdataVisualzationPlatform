@@ -1,9 +1,10 @@
 package com.gxu.tbvp.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
-public class Accessrecord {
+public class Accessrecord implements Serializable {
     @Id
     private Integer id;
 

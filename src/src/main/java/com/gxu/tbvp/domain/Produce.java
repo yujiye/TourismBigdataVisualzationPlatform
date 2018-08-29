@@ -1,9 +1,10 @@
 package com.gxu.tbvp.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
-public class Produce {
+public class Produce implements Serializable {
     /**
      * 旅游路线id
      */

@@ -1,9 +1,10 @@
 package com.gxu.tbvp.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
-public class Mapperdemo {
+public class Mapperdemo implements Serializable {
     /**
      * 用户名字，用于登陆
      */

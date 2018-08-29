@@ -1,8 +1,9 @@
 package com.gxu.tbvp.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-public class Role {
+public class Role implements Serializable {
     @Id
     private Integer id;
 
