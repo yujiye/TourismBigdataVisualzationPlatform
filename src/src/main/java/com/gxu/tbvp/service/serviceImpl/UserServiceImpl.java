@@ -15,6 +15,7 @@ import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service("userService")
 public class UserServiceImpl extends BaseService<User> implements UserService {
@@ -84,5 +85,11 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
         } catch (Exception e) {
             return 0;
         }
+    }
+
+    @Override
+    public int countSex(User user) {
+        int temp = userMapper.selectCountByExample(user);
+        return temp;
     }
 }

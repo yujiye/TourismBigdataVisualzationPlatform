@@ -1,5 +1,9 @@
 package com.gxu.tbvp.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
@@ -19,11 +23,13 @@ public class User implements Serializable {
      */
     private String username;
 
+    @JsonIgnore
     private String password;
 
     /**
      * 姓名
      */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String name;
 
     /**
@@ -41,6 +47,7 @@ public class User implements Serializable {
      * 用户最近访问时间
      */
     @Column(name = "last_time")
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss", locale = "zh", timezone = "GMT+8")
     private Date lastTime;
 
     /**

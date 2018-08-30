@@ -9,7 +9,7 @@ public class Manager implements Serializable {
      * id
      */
     @Id
-    private String id;
+    private Integer id;
 
     private String username;
 
@@ -72,11 +72,16 @@ public class Manager implements Serializable {
     private Integer produceid;
 
     /**
+     * 是否有效
+     */
+    private Integer enble;
+
+    /**
      * 获取id
      *
      * @return id - id
      */
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -85,7 +90,7 @@ public class Manager implements Serializable {
      *
      * @param id id
      */
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -295,5 +300,23 @@ public class Manager implements Serializable {
      */
     public void setProduceid(Integer produceid) {
         this.produceid = produceid;
+    }
+
+    /**
+     * 获取是否有效
+     *
+     * @return enble - 是否有效
+     */
+    public Integer getEnble() {
+        return enble;
+    }
+
+    /**
+     * 设置是否有效
+     *
+     * @param enble 是否有效
+     */
+    public void setEnble(Integer enble) {
+        this.enble = enble;
     }
 }

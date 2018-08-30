@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.gxu.tbvp.domain.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserService extends IService<User>{
 
@@ -14,4 +15,6 @@ public interface UserService extends IService<User>{
     void delUser(Integer userid);
 
     int insertBach(List<User> userList);
+
+    int countSex(User user);
 }

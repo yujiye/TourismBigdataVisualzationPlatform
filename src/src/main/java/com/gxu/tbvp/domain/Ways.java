@@ -1,5 +1,7 @@
 package com.gxu.tbvp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -11,12 +13,14 @@ public class Ways implements Serializable {
      * 起始地
      */
     @Column(name = "startPlace")
+    @JsonIgnore
     private String startplace;
 
     /**
      * 目的地
      */
     @Column(name = "endPlace")
+    @JsonIgnore
     private String endplace;
 
     private Double amount;
