@@ -38,8 +38,6 @@ public class HomeController {
         UsernamePasswordToken token=new UsernamePasswordToken(user.getUsername(),user.getPassword());
         try {
             subject.login(token);
-            User user1 = (User) SecurityUtils.getSubject().getPrincipal();
-            System.out.print((User) SecurityUtils.getSubject().getPrincipal());
             return "redirect:usersPage";
         }catch (LockedAccountException lae) {
             token.clear();

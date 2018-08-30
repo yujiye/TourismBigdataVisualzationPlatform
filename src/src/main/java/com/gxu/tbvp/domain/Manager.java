@@ -71,6 +71,12 @@ public class Manager {
     private Integer produceid;
 
     /**
+     * 是否可用 1可用，0不可用
+     */
+    private Integer enable;
+
+
+    /**
      * 获取id
      *
      * @return id - id
@@ -294,5 +300,23 @@ public class Manager {
      */
     public void setProduceid(Integer produceid) {
         this.produceid = produceid;
+    }
+
+    /**
+     * 获取是否可用
+     *
+     * @return produceId - 产品信息id
+     */
+    public Integer getEnable() {
+        return enable;
+    }
+
+    /**
+     * 设置是否可用
+     *
+     * @param enable 是否可用
+     */
+    public void setEnable(Integer enable) {
+        this.enable = enable;
     }
 }

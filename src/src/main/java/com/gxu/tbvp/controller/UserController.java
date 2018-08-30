@@ -32,21 +32,4 @@ public class UserController {
         return "register";
     }
 
-    @RequestMapping(value="/addUser",method=RequestMethod.POST)
-    public String login(HttpServletRequest request, User user, Model model){
-        User u = userService.selectByUsername(user.getUsername());
-        if(u != null)
-            return "error";
-        try {
-            user.setEnable(1);
-            PasswordHelper passwordHelper = new PasswordHelper();
-            passwordHelper.encryptPassword(user);
-            user.setRegisterTime(new Date());
-            userService.save(user);
-            return "login";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "404";
-        }
-    }
 }
