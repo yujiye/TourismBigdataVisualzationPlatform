@@ -29,6 +29,6 @@
                              type="XMLMAPPER"/>
 
 
-        <table tableName="user"></table>
+        <table tableName="ways"></table>
     </context>
 </generatorConfiguration>
