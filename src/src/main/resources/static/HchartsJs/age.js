@@ -7,7 +7,7 @@ var chart = Highcharts.chart('age', {
 		}
 	},
 	title: {
-		// text: '游客年龄段统计'
+		text: null
 	},
 	subtitle: {
 		// text: 'Highcharts 中的3D环形图'

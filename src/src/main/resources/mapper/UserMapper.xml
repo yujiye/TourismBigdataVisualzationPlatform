@@ -1,21 +1,29 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.gxu.tbvp.mapper.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.gxu.tbvp.domain.User" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gxu.tbvp.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.gxu.tbvp.domain.User">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="addressId" property="addressid" jdbcType="INTEGER" />
-    <result column="username" property="username" jdbcType="VARCHAR" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="VARCHAR" />
-    <result column="register_time" property="registerTime" jdbcType="TIMESTAMP" />
-    <result column="last_time" property="lastTime" jdbcType="TIMESTAMP" />
-    <result column="sex" property="sex" jdbcType="INTEGER" />
-    <result column="age" property="age" jdbcType="INTEGER" />
-    <result column="idCard" property="idcard" jdbcType="VARCHAR" />
-    <result column="enable" property="enable" jdbcType="INTEGER" />
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="addressId" jdbcType="INTEGER" property="addressid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
+    <result column="last_time" jdbcType="TIMESTAMP" property="lastTime" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="idCard" jdbcType="VARCHAR" property="idcard" />
+    <result column="enable" jdbcType="INTEGER" property="enable" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
   </resultMap>
+
+  <!--<insert id="insertBatch" parameterType="List">
+    INSERT INTO TStudent(name,age)
+    <foreach collection="list" item="item" index="index" open="(" close=")" separator="union all">
+      SELECT #{item.name} as a, #{item.age} as b FROM DUAL
+    </foreach>
+  </insert>-->
 </mapper>

@@ -1,11 +1,14 @@
 package com.gxu.tbvp.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
 public class User implements Serializable {
-
     /**
      * 用户旅客id
      */
@@ -20,11 +23,13 @@ public class User implements Serializable {
      */
     private String username;
 
+    @JsonIgnore
     private String password;
 
     /**
      * 姓名
      */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String name;
 
     /**
@@ -42,6 +47,7 @@ public class User implements Serializable {
      * 用户最近访问时间
      */
     @Column(name = "last_time")
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss", locale = "zh", timezone = "GMT+8")
     private Date lastTime;
 
     /**
@@ -64,6 +70,11 @@ public class User implements Serializable {
      * 账户是否能用
      */
     private Integer enable;
+
+    /**
+     * 省份
+     */
+    private String province;
 
     /**
      * 获取用户旅客id
@@ -271,5 +282,23 @@ public class User implements Serializable {
      */
     public void setEnable(Integer enable) {
         this.enable = enable;
+    }
+
+    /**
+     * 获取省份
+     *
+     * @return province - 省份
+     */
+    public String getProvince() {
+        return province;
+    }
+
+    /**
+     * 设置省份
+     *
+     * @param province 省份
+     */
+    public void setProvince(String province) {
+        this.province = province;
     }
 }

@@ -1,10 +1,11 @@
 package com.gxu.tbvp.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "super_manager")
-public class SuperManager {
+public class SuperManager implements Serializable {
     /**
      * id
      */

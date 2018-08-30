@@ -1,8 +1,11 @@
 package com.gxu.tbvp.domain;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class Ways {
+import javax.persistence.*;
+import java.io.Serializable;
+
+public class Ways implements Serializable {
     @Id
     private Integer id;
 
@@ -10,20 +13,22 @@ public class Ways {
      * 起始地
      */
     @Column(name = "startPlace")
+    @JsonIgnore
     private String startplace;
 
     /**
      * 目的地
      */
     @Column(name = "endPlace")
+    @JsonIgnore
     private String endplace;
 
     private Double amount;
 
     /**
-     * 出行方式，如飞机
+     * 0飞机，1火车，2汽车，3自驾，4其它
      */
-    private String way;
+    private Integer way;
 
     /**
      * @return id
@@ -90,20 +95,20 @@ public class Ways {
     }
 
     /**
-     * 获取出行方式，如飞机
+     * 获取0飞机，1火车，2汽车，3自驾，4其它
      *
-     * @return way - 出行方式，如飞机
+     * @return way - 0飞机，1火车，2汽车，3自驾，4其它
      */
-    public String getWay() {
+    public Integer getWay() {
         return way;
     }
 
     /**
-     * 设置出行方式，如飞机
+     * 设置0飞机，1火车，2汽车，3自驾，4其它
      *
-     * @param way 出行方式，如飞机
+     * @param way 0飞机，1火车，2汽车，3自驾，4其它
      */
-    public void setWay(String way) {
+    public void setWay(Integer way) {
         this.way = way;
     }
 }

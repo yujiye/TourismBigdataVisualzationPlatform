@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 @ControllerAdvice
 public class SelfExceptionHandler {
 	
-	public static final String ERROR_VIEW = "error";
+	public static final String ERROR_VIEW = "404";
 	
 	@ExceptionHandler(value = Exception.class)
 	public Object errorHandler(HttpServletRequest request,

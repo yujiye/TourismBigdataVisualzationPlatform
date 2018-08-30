@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.github.pagehelper.util.StringUtil;
 import com.gxu.tbvp.domain.User;
 import com.gxu.tbvp.domain.UserRole;
+import com.gxu.tbvp.mapper.UserMapper;
 import com.gxu.tbvp.mapper.UserRoleMapper;
 import com.gxu.tbvp.service.UserService;
 import org.springframework.stereotype.Service;
@@ -14,9 +15,13 @@ import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service("userService")
 public class UserServiceImpl extends BaseService<User> implements UserService {
+
+    @Resource
+    private UserMapper userMapper;
 
     @Resource
     private UserRoleMapper userRoleMapper;
@@ -68,5 +73,23 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
         Example.Criteria criteria = example.createCriteria();
         criteria.andEqualTo("userid",userid);
         userRoleMapper.deleteByExample(example);
+    }
+
+    @Override
+//    @Transactional(propagation= Propagation.REQUIRED,readOnly=false,rollbackFor={Exception.class})
+    public int insertBach(List<User> userList) {
+        try {
+            userMapper.insertList(userList);
+//            userMapper.insert(userList.get(0));
+            return 1;
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    @Override
+    public int countSex(User user) {
+        int temp = userMapper.selectCountByExample(user);
+        return temp;
     }
 }

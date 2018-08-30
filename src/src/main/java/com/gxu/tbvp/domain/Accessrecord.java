@@ -1,9 +1,10 @@
 package com.gxu.tbvp.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
-public class Accessrecord {
+public class Accessrecord implements Serializable {
     @Id
     private Integer id;
 
@@ -14,40 +15,22 @@ public class Accessrecord {
     private Integer userid;
 
     /**
-     * 空表示对平台的访问，非空表示对路线的访问
+     * 购买的产品id
      */
-    @Column(name = "produceId")
-    private Integer produceid;
+    @Column(name = "buyProduceId")
+    private Integer buyproduceid;
 
     /**
-     * 记录生成时间
+     * 购买工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等
      */
-    @Column(name = "createTime")
-    private Date createtime;
+    @Column(name = "buyTool")
+    private Integer buytool;
 
     /**
-     * 0表示访问记录，1表示通过携程购买，2表示省油灯购买，3表示在代理处购买等
+     * 购买时间
      */
-    @Column(name = "buy_tool")
-    private Integer buyTool;
-
-    /**
-     * 空，表示非代理处购买，否则在代理处购买并可以找到此次购买的代理人
-     */
-    @Column(name = "agentId")
-    private Integer agentid;
-
-    /**
-     * 0表示现金支付，1微信支付，2支付宝支付
-     */
-    @Column(name = "buy_way")
-    private Integer buyWay;
-
-    /**
-     * 购买时间，为空表示访问时间
-     */
-    @Column(name = "buy_time")
-    private Date buyTime;
+    @Column(name = "buyTime")
+    private Date buytime;
 
     /**
      * 所花金额，单位元
@@ -56,9 +39,16 @@ public class Accessrecord {
     private Double buyPrice;
 
     /**
-     * 买票的张数
+     * 停留时间
      */
-    private Integer count;
+    @Column(name = "totalTime")
+    private Integer totaltime;
+
+    /**
+     * 购买数量
+     */
+    @Column(name = "buyCount")
+    private Integer buycount;
 
     /**
      * @return id
@@ -93,111 +83,57 @@ public class Accessrecord {
     }
 
     /**
-     * 获取空表示对平台的访问，非空表示对路线的访问
+     * 获取购买的产品id
      *
-     * @return produceId - 空表示对平台的访问，非空表示对路线的访问
+     * @return buyProduceId - 购买的产品id
      */
-    public Integer getProduceid() {
-        return produceid;
+    public Integer getBuyproduceid() {
+        return buyproduceid;
     }
 
     /**
-     * 设置空表示对平台的访问，非空表示对路线的访问
+     * 设置购买的产品id
      *
-     * @param produceid 空表示对平台的访问，非空表示对路线的访问
+     * @param buyproduceid 购买的产品id
      */
-    public void setProduceid(Integer produceid) {
-        this.produceid = produceid;
+    public void setBuyproduceid(Integer buyproduceid) {
+        this.buyproduceid = buyproduceid;
     }
 
     /**
-     * 获取记录生成时间
+     * 获取购买工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等
      *
-     * @return createTime - 记录生成时间
+     * @return buyTool - 购买工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等
      */
-    public Date getCreatetime() {
-        return createtime;
+    public Integer getBuytool() {
+        return buytool;
     }
 
     /**
-     * 设置记录生成时间
+     * 设置购买工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等
      *
-     * @param createtime 记录生成时间
+     * @param buytool 购买工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等
      */
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setBuytool(Integer buytool) {
+        this.buytool = buytool;
     }
 
     /**
-     * 获取0表示访问记录，1表示通过携程购买，2表示省油灯购买，3表示在代理处购买等
+     * 获取购买时间
      *
-     * @return buy_tool - 0表示访问记录，1表示通过携程购买，2表示省油灯购买，3表示在代理处购买等
+     * @return buyTime - 购买时间
      */
-    public Integer getBuyTool() {
-        return buyTool;
+    public Date getBuytime() {
+        return buytime;
     }
 
     /**
-     * 设置0表示访问记录，1表示通过携程购买，2表示省油灯购买，3表示在代理处购买等
+     * 设置购买时间
      *
-     * @param buyTool 0表示访问记录，1表示通过携程购买，2表示省油灯购买，3表示在代理处购买等
+     * @param buytime 购买时间
      */
-    public void setBuyTool(Integer buyTool) {
-        this.buyTool = buyTool;
-    }
-
-    /**
-     * 获取空，表示非代理处购买，否则在代理处购买并可以找到此次购买的代理人
-     *
-     * @return agentId - 空，表示非代理处购买，否则在代理处购买并可以找到此次购买的代理人
-     */
-    public Integer getAgentid() {
-        return agentid;
-    }
-
-    /**
-     * 设置空，表示非代理处购买，否则在代理处购买并可以找到此次购买的代理人
-     *
-     * @param agentid 空，表示非代理处购买，否则在代理处购买并可以找到此次购买的代理人
-     */
-    public void setAgentid(Integer agentid) {
-        this.agentid = agentid;
-    }
-
-    /**
-     * 获取0表示现金支付，1微信支付，2支付宝支付
-     *
-     * @return buy_way - 0表示现金支付，1微信支付，2支付宝支付
-     */
-    public Integer getBuyWay() {
-        return buyWay;
-    }
-
-    /**
-     * 设置0表示现金支付，1微信支付，2支付宝支付
-     *
-     * @param buyWay 0表示现金支付，1微信支付，2支付宝支付
-     */
-    public void setBuyWay(Integer buyWay) {
-        this.buyWay = buyWay;
-    }
-
-    /**
-     * 获取购买时间，为空表示访问时间
-     *
-     * @return buy_time - 购买时间，为空表示访问时间
-     */
-    public Date getBuyTime() {
-        return buyTime;
-    }
-
-    /**
-     * 设置购买时间，为空表示访问时间
-     *
-     * @param buyTime 购买时间，为空表示访问时间
-     */
-    public void setBuyTime(Date buyTime) {
-        this.buyTime = buyTime;
+    public void setBuytime(Date buytime) {
+        this.buytime = buytime;
     }
 
     /**
@@ -219,20 +155,38 @@ public class Accessrecord {
     }
 
     /**
-     * 获取买票的张数
+     * 获取停留时间
      *
-     * @return count - 买票的张数
+     * @return totalTime - 停留时间
      */
-    public Integer getCount() {
-        return count;
+    public Integer getTotaltime() {
+        return totaltime;
     }
 
     /**
-     * 设置买票的张数
+     * 设置停留时间
      *
-     * @param count 买票的张数
+     * @param totaltime 停留时间
      */
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setTotaltime(Integer totaltime) {
+        this.totaltime = totaltime;
+    }
+
+    /**
+     * 获取购买数量
+     *
+     * @return buyCount - 购买数量
+     */
+    public Integer getBuycount() {
+        return buycount;
+    }
+
+    /**
+     * 设置购买数量
+     *
+     * @param buycount 购买数量
+     */
+    public void setBuycount(Integer buycount) {
+        this.buycount = buycount;
     }
 }

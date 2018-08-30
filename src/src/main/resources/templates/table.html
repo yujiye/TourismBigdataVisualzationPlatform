@@ -260,8 +260,10 @@ BODY 标签选项：
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">头部</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>链接</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>另一个链接</span></a></li>
+        <li class="active"><a th:href="@{index.html}"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
+        <li><a th:href="@{visitors.html}"><i class="fa fa-pie-chart"></i> <span>游客大数据</span></a></li>
+        <li><a th:href="@{products.html}"><i class="fa fa-circle-o"></i> <span>产品大数据</span></a></li>
+        <li><a th:href="@{agent.html}"><i class="fa fa-edit"></i> <span>代理大数据</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>多级菜单</span>
             <span class="pull-right-container">
@@ -326,7 +328,7 @@ BODY 标签选项：
                     </tr>
                     <tr>
                       <td>1.</td>
-                      <td>更新软件</td>
+                      <td>产品1</td>
                       <td>
                           12312
                       </td>
@@ -334,27 +336,27 @@ BODY 标签选项：
                     </tr>
                     <tr>
                       <td>2.</td>
-                      <td>清理数据库</td>
+                      <td>产品2</td>
                       <td>
                             10000
                       </td>
-                      <td><span class="badge bg-yellow">70%</span></td>
+                      <td><span class="badge bg-yellow">30%</span></td>
                     </tr>
                     <tr>
                       <td>3.</td>
-                      <td>Cron 任务运行</td>
+                      <td>产品3</td>
                       <td>
                             9312
                       </td>
-                      <td><span class="badge bg-light-blue">30%</span></td>
+                      <td><span class="badge bg-light-blue">10%</span></td>
                     </tr>
                     <tr>
                       <td>4.</td>
-                      <td>修复 BUG</td>
+                      <td>产品4</td>
                       <td>
                         8888
                       </td>
-                      <td><span class="badge bg-green">90%</span></td>
+                      <td><span class="badge bg-green">3%</span></td>
                     </tr>
                   </tbody></table>
                 </div>

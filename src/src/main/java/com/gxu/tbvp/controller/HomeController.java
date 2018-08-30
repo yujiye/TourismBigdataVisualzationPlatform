@@ -28,6 +28,25 @@ public class HomeController {
         return "login";
     }
 
+    // 以下RequestMapping临时测试前端使用
+/*    @RequestMapping(value = "/table", method = RequestMethod.GET)
+    public String table() { return "table"; }
+
+    @RequestMapping(value="/visitos",method= RequestMethod.GET)
+    public String visitos(){
+        return "visitos";
+    }
+
+    @RequestMapping(value = "/products", method = RequestMethod.GET)
+    public String products() { return "products"; }
+
+    @RequestMapping(value = "/agent", method = RequestMethod.GET)
+    public String agent() { return "agent"; }
+
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String index() { return "index"; }*/
+    //ending
+
     @RequestMapping(value="/login",method=RequestMethod.POST)
     public String login(HttpServletRequest request, User user, Model model){
         if (StringUtils.isEmpty(user.getUsername()) || StringUtils.isEmpty(user.getPassword())) {

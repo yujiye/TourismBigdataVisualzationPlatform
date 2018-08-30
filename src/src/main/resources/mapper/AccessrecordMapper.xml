@@ -7,13 +7,11 @@
     -->
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="userId" property="userid" jdbcType="INTEGER" />
-    <result column="produceId" property="produceid" jdbcType="INTEGER" />
-    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
-    <result column="buy_tool" property="buyTool" jdbcType="INTEGER" />
-    <result column="agentId" property="agentid" jdbcType="INTEGER" />
-    <result column="buy_way" property="buyWay" jdbcType="INTEGER" />
-    <result column="buy_time" property="buyTime" jdbcType="TIMESTAMP" />
+    <result column="buyProduceId" property="buyproduceid" jdbcType="INTEGER" />
+    <result column="buyTool" property="buytool" jdbcType="INTEGER" />
+    <result column="buyTime" property="buytime" jdbcType="TIMESTAMP" />
     <result column="buy_price" property="buyPrice" jdbcType="DOUBLE" />
-    <result column="count" property="count" jdbcType="INTEGER" />
+    <result column="totalTime" property="totaltime" jdbcType="INTEGER" />
+    <result column="buyCount" property="buycount" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

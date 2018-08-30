@@ -29,9 +29,9 @@
                              type="XMLMAPPER"/>
 
 
-        <table tableName="user"></table>
-        <table tableName="agent"></table>
+        <table tableName="accessRecord"></table>
+        <table tableName="buyRecord"></table>
         <table tableName="manager"></table>
-        <table tableName="super_manager"></table>
+
     </context>
 </generatorConfiguration>

@@ -1,14 +1,15 @@
 package com.gxu.tbvp.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
-public class Manager {
+public class Manager implements Serializable {
     /**
      * id
      */
     @Id
-    private String id;
+    private Integer id;
 
     private String username;
 
@@ -71,17 +72,16 @@ public class Manager {
     private Integer produceid;
 
     /**
-     * 是否可用 1可用，0不可用
+     * 是否有效
      */
-    private Integer enable;
-
+    private Integer enble;
 
     /**
      * 获取id
      *
      * @return id - id
      */
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -90,7 +90,7 @@ public class Manager {
      *
      * @param id id
      */
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -303,20 +303,20 @@ public class Manager {
     }
 
     /**
-     * 获取是否可用
+     * 获取是否有效
      *
-     * @return produceId - 产品信息id
+     * @return enble - 是否有效
      */
-    public Integer getEnable() {
-        return enable;
+    public Integer getEnble() {
+        return enble;
     }
 
     /**
-     * 设置是否可用
+     * 设置是否有效
      *
-     * @param enable 是否可用
+     * @param enble 是否有效
      */
-    public void setEnable(Integer enable) {
-        this.enable = enable;
+    public void setEnble(Integer enble) {
+        this.enble = enble;
     }
 }

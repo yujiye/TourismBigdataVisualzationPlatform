@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <!--
 这是起始页面，你可以使用此页面开始你的项目。
@@ -8,7 +9,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | 起始页</title>
+  <title>旅游大数据可视化 | gxu</title>
   <!-- 告诉浏览器该页面是自适应布局 -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" th:href="@{bower_components/bootstrap/dist/css/bootstrap.min.css}">
@@ -63,226 +64,9 @@ BODY 标签选项：
 <div class="wrapper">
 
   <!-- Main Header -->
-  <header class="main-header">
-
-    <!-- Logo -->
-    <a href="index2.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
-    </a>
-
-    <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top" role="navigation">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">切换导航</span>
-      </a>
-      <!-- Navbar Right Menu -->
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown messages-menu">
-            <!-- Menu toggle button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-envelope-o"></i>
-              <span class="label label-success">4</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">你有 4 条消息</li>
-              <li>
-                <!-- inner menu: contains the messages -->
-                <ul class="menu">
-                  <li><!-- start message -->
-                    <a href="#">
-                      <div class="pull-left">
-                        <!-- User Image -->
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="用户图像">
-                      </div>
-                      <!-- Message title and timestamp -->
-                      <h4>
-                        支持团队
-                        <small><i class="fa fa-clock-o"></i> 5 分钟前</small>
-                      </h4>
-                      <!-- The message -->
-                      <p>为什么不购买一个高级模板主题？</p>
-                    </a>
-                  </li>
-                  <!-- end message -->
-                </ul>
-                <!-- /.menu -->
-              </li>
-              <li class="footer"><a href="#">查看所有消息</a></li>
-            </ul>
-          </li>
-          <!-- /.messages-menu -->
-
-          <!-- Notifications Menu -->
-          <li class="dropdown notifications-menu">
-            <!-- Menu toggle button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">你有 10 条通知</li>
-              <li>
-                <!-- Inner Menu: contains the notifications -->
-                <ul class="menu">
-                  <li><!-- start notification -->
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 今日 5 名新进会员加入
-                    </a>
-                  </li>
-                  <!-- end notification -->
-                </ul>
-              </li>
-              <li class="footer"><a href="#">查看所有</a></li>
-            </ul>
-          </li>
-          <!-- Tasks Menu -->
-          <li class="dropdown tasks-menu">
-            <!-- Menu Toggle Button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-flag-o"></i>
-              <span class="label label-danger">9</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">你有 9 项任务</li>
-              <li>
-                <!-- Inner menu: contains the tasks -->
-                <ul class="menu">
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <!-- Task title and progress text -->
-                      <h3>
-                        设计一些按钮
-                        <small class="pull-right">20%</small>
-                      </h3>
-                      <!-- The progress bar -->
-                      <div class="progress xs">
-                        <!-- Change the css width attribute to simulate progress -->
-                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">20% 完成</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                </ul>
-              </li>
-              <li class="footer">
-                <a href="#">查看所有任务</a>
-              </li>
-            </ul>
-          </li>
-          <!-- User Account Menu -->
-          <li class="dropdown user user-menu">
-            <!-- Menu Toggle Button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <!-- The user image in the navbar-->
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="用户图像">
-              <!-- hidden-xs 在小型设备上隐藏用户名，只显示图像。 -->
-              <span class="hidden-xs">Alexander Pierce</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- The user image in the menu -->
-              <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="用户图像">
-
-                <p>
-                  Alexander Pierce - Web 开发人员
-                  <small>注册于2012年11月</small>
-                </p>
-              </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">关注</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">销售</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">好友</a>
-                  </div>
-                </div>
-                <!-- /.row -->
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">资料</a>
-                </div>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">退出</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+  <div th:include="common/main-header :: main-header"></div>
   <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="用户图像">
-        </div>
-        <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
-        </div>
-      </div>
-
-      <!-- search form (Optional) -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="搜索...">
-          <span class="input-group-btn">
-              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-              </button>
-            </span>
-        </div>
-      </form>
-      <!-- /.search form -->
-
-      <!-- Sidebar Menu -->
-      <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">头部</li>
-        <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>链接</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>另一个链接</span></a></li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>多级菜单</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">2级链接</a></li>
-            <li><a href="#">2级链接</a></li>
-          </ul>
-        </li>
-      </ul>
-      <!-- /.sidebar-menu -->
-    </section>
-    <!-- /.sidebar -->
-  </aside>
+  <div th:include="common/main-sidebar :: main-sidebar"></div>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -311,7 +95,7 @@ BODY 标签选项：
                 <span class="info-box-icon bg-green" style="height: 125px;"><i class="fa ion-android-favorite"></i></span>
     
                 <div class="info-box-content">
-                  <h4>今日产品实时热搜榜 <a href="table.html" class="" style="font-size: 14px;">更多信息 <i class="fa fa-arrow-circle-right"></i></a></h4>
+                  <h4>今周产品实时热搜榜 <a th:href="@{table.html}" class="" style="font-size: 14px;">更多信息 <i class="fa fa-arrow-circle-right"></i></a></h4>
                   <ul style="list-style: none;line-height: 22px;">
                       <li><span class="label label-danger">1</span>  泰国 11410</li>
                       <li><span class="label label-info">2</span>  新加坡 41,410</li>
@@ -329,7 +113,7 @@ BODY 标签选项：
                   <span class="info-box-icon bg-yellow" style="height: 125px;"><i class="fa ion-android-favorite"></i></span>
       
                   <div class="info-box-content">
-                    <span class="info-box-text"><h4>本周产品实时热搜榜 <a href="table.html" class="" style="font-size: 14px;">更多信息 <i class="fa fa-arrow-circle-right"></i></a></h4></span>
+                    <span class="info-box-text"><h4>本月产品实时热搜榜 <a th:href="@{table.html}" class="" style="font-size: 14px;">更多信息 <i class="fa fa-arrow-circle-right"></i></a></h4></span>
                     <ul style="list-style: none;line-height: 22px;">
                         <li><span class="label label-danger">1</span>  泰国 11410</li>
                         <li><span class="label label-info">2</span>  新加坡 41,410</li>
@@ -346,7 +130,7 @@ BODY 标签选项：
                   <span class="info-box-icon bg-blue" style="height: 125px;"><i class="fa ion-android-favorite"></i></span>
       
                   <div class="info-box-content">
-                    <span class="info-box-text"><h4>今日产品实时销量榜 <a href="table.html" class="" style="font-size: 14px;">更多信息 <i class="fa fa-arrow-circle-right"></i></a></h4></span>
+                    <span class="info-box-text"><h4>今月产品实时销量榜 <a th:href="@{table.html}" class="" style="font-size: 14px;">更多信息 <i class="fa fa-arrow-circle-right"></i></a></h4></span>
                     <ul style="list-style: none;line-height: 22px;">
                         <li><span class="label label-danger">1</span>  泰国 11410</li>
                         <li><span class="label label-info">2</span>  新加坡 41,410</li>
@@ -362,7 +146,7 @@ BODY 标签选项：
                   <span class="info-box-icon bg-red" style="height: 125px;"><i class="fa ion-android-favorite"></i></span>
       
                   <div class="info-box-content">
-                    <span class="info-box-text"><h4>本周产品实时销量榜 <a href="table.html" class="" style="font-size: 14px;">更多信息 <i class="fa fa-arrow-circle-right"></i></a></h4></span>
+                    <span class="info-box-text"><h4>本周产品实时销量榜 <a th:href="@{table.html}" class="" style="font-size: 14px;">更多信息 <i class="fa fa-arrow-circle-right"></i></a></h4></span>
                     <ul style="list-style: none;line-height: 22px;">
                         <li><span class="label label-danger">1</span>  泰国 11410</li>
                         <li><span class="label label-info">2</span>  新加坡 41,410</li>
@@ -614,50 +398,6 @@ BODY 标签选项：
   <!-- 添加侧边栏的背景。
   这个 div必须放在 control-sidebar 之后 -->
   <div class="control-sidebar-bg"></div>
-
-  <pre id="tsv" style="display:none">
-      Browser Version	Total Market Share
-      飞机 18.0	26.61%
-      飞机 9.0	16.96%
-      火车 18.0	8.01%
-      火车 19.0	7.73%
-      汽车 12	6.72%
-      飞机 6.0	6.40%
-      汽车 11	4.72%
-      飞机 7.0	3.55%
-      其它 5.1	3.53%
-      汽车 13	2.16%
-      汽车 3.6	1.87%
-      自驾 11.x	1.30%
-      火车 17.0	1.13%
-      汽车 10	0.90%
-      其它 5.0	0.85%
-      汽车 9.0	0.65%
-      汽车 8.0	0.55%
-      汽车 4.0	0.50%
-      火车 16.0	0.45%
-      汽车 3.0	0.36%
-      汽车 3.5	0.36%
-      汽车 6.0	0.32%
-      汽车 5.0	0.31%
-      汽车 7.0	0.58%
-      <!-- Proprietary or Undetectable	0.29% -->
-      火车 18.0 - Maxthon Edition	0.26%
-      火车 14.0	0.25%
-      火车 20.0	0.24%
-      火车 15.0	0.18%
-      火车 12.0	0.16%
-      汽车 12.x	0.15%
-      其它 4.0	0.14%
-      火车 13.0	0.13%
-      其它 4.1	0.12%
-      火车 11.0	0.10%
-      汽车 14	0.10%
-      汽车 2.0	0.09%
-      火车 10.0	0.09%
-      汽车 10.x	0.09%
-      飞机 8.0 - Tencent Traveler Edition	0.09%
-  </pre>
 </div>
 <!-- ./wrapper -->
 

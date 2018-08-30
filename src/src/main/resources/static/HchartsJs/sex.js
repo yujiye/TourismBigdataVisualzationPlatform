@@ -43,8 +43,9 @@ var chart = Highcharts.chart('sex', {
 		innerSize: '60%',
 		name: '占比',
 		data: [
-			{name:'男性',   y: 45.0, url : ''},
-			['女性',       55.0],
+			// {name:'男性',   y: 45.0, url : ''},
+			['男性', 45.0],
+			['女性', 55.0],
 		]
 	}],
     credits: {

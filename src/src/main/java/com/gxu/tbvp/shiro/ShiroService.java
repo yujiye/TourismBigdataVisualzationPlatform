@@ -45,7 +45,7 @@ public class ShiroService {
             }
         }
         filterChainDefinitionMap.put("/**", "authc");
-        System.out.print("权限初始化成功");
+        System.out.println("初始化权限成功！！");
         return filterChainDefinitionMap;
     }
 

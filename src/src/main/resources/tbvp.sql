@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80011
 File Encoding         : 65001
 
-Date: 2018-08-21 12:14:44
+Date: 2018-08-30 10:08:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,22 +20,16 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `accessrecord`;
 CREATE TABLE `accessrecord` (
-  `id` int(12) NOT NULL,
+  `id` int(12) NOT NULL AUTO_INCREMENT,
   `userId` int(12) DEFAULT NULL COMMENT '为空，表示游览用户非平台注册用户',
-  `produceId` int(12) DEFAULT NULL COMMENT '空表示对平台的访问，非空表示对路线的访问',
-  `createTime` datetime NOT NULL COMMENT '记录生成时间',
-  `buy_tool` int(2) DEFAULT NULL COMMENT '0表示访问记录，1表示通过携程购买，2表示省油灯购买，3表示在代理处购买等',
-  `agentId` int(11) DEFAULT NULL COMMENT '空，表示非代理处购买，否则在代理处购买并可以找到此次购买的代理人',
-  `buy_way` int(2) DEFAULT NULL COMMENT '0表示现金支付，1微信支付，2支付宝支付',
-  `buy_time` datetime DEFAULT NULL COMMENT '购买时间，为空表示访问时间',
+  `buyProduceId` int(12) DEFAULT NULL COMMENT '购买的产品id',
+  `buyTool` int(2) DEFAULT NULL COMMENT '购买工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等',
+  `buyTime` datetime DEFAULT NULL COMMENT '购买时间',
   `buy_price` double(30,0) DEFAULT NULL COMMENT '所花金额，单位元',
-  `count` int(3) DEFAULT NULL COMMENT '买票的张数',
+  `totalTime` int(3) DEFAULT NULL COMMENT '停留时间',
+  `buyCount` int(6) DEFAULT NULL COMMENT '购买数量',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of accessrecord
--- ----------------------------
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for address
@@ -49,10 +43,6 @@ CREATE TABLE `address` (
   `deati` varchar(255) DEFAULT NULL COMMENT '详细地址',
   PRIMARY KEY (`addressId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of address
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for agent
@@ -72,11 +62,21 @@ CREATE TABLE `agent` (
   `idCard` varchar(30) DEFAULT NULL COMMENT '身份证信息',
   `Place` varchar(30) DEFAULT NULL COMMENT '代理地区',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of agent
+-- Table structure for buyrecord
 -- ----------------------------
+DROP TABLE IF EXISTS `buyrecord`;
+CREATE TABLE `buyrecord` (
+  `id` int(12) NOT NULL AUTO_INCREMENT,
+  `userId` int(12) DEFAULT NULL COMMENT '为空，表示游览用户非平台注册用户',
+  `accessProduceId` int(12) DEFAULT NULL COMMENT '访问产品的id',
+  `accessTool` int(2) DEFAULT NULL COMMENT '访问工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等',
+  `accessTime` datetime DEFAULT NULL COMMENT '购买时间，为空表示访问时间',
+  `totalTime` int(3) DEFAULT NULL COMMENT '停留时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for manager
@@ -96,16 +96,13 @@ CREATE TABLE `manager` (
   `last_time` datetime DEFAULT NULL COMMENT '用户最近访问时间',
   `idCard` varchar(30) DEFAULT NULL COMMENT '身份证号码',
   `produceId` int(12) DEFAULT NULL COMMENT '产品信息id',
+  `enble` int(1) unsigned zerofill NOT NULL COMMENT '是否有效',
   PRIMARY KEY (`id`),
   KEY `addressId` (`addressId`),
   KEY `produceId` (`produceId`),
   CONSTRAINT `manager_ibfk_1` FOREIGN KEY (`addressId`) REFERENCES `address` (`addressid`),
   CONSTRAINT `manager_ibfk_2` FOREIGN KEY (`produceId`) REFERENCES `produce` (`produceid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of manager
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for mapperdemo
@@ -123,15 +120,6 @@ CREATE TABLE `mapperdemo` (
   `user_deleted_time` datetime DEFAULT NULL COMMENT '用户删除时间',
   PRIMARY KEY (`user_name`,`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
-
--- ----------------------------
--- Records of mapperdemo
--- ----------------------------
-INSERT INTO `mapperdemo` VALUES ('1808040FZ7SG3M5P', 'gucun', 'gucun@qq.com', '18978946943', '12345', '0', null, '2018-08-04 00:44:58', null);
-INSERT INTO `mapperdemo` VALUES ('ears', 'testmapper', '97@qq.com', '123456', '123', null, null, '2018-08-14 22:02:21', null);
-INSERT INTO `mapperdemo` VALUES ('1808019015XF158H', 'twodog', 'twodoge@qq.com', '18978946943', '12345', '0', null, '2018-08-01 12:36:46', null);
-INSERT INTO `mapperdemo` VALUES ('180801B86ZD97B9P', 'xiaogong', 'xiaohong@qq.com', '18978946943', '12345', '0', null, '2018-08-01 15:49:32', null);
-INSERT INTO `mapperdemo` VALUES ('1808040G4GS1RP94', 'xiaoming', 'xiaoming@qq.com', '18978946943', '12345', '0', null, '2018-08-04 00:45:32', null);
 
 -- ----------------------------
 -- Table structure for produce
@@ -152,8 +140,15 @@ CREATE TABLE `produce` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of produce
+-- Table structure for region
 -- ----------------------------
+DROP TABLE IF EXISTS `region`;
+CREATE TABLE `region` (
+  `id` int(10) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `parent_id` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for resources
@@ -170,10 +165,6 @@ CREATE TABLE `resources` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of resources
--- ----------------------------
-
--- ----------------------------
 -- Table structure for role
 -- ----------------------------
 DROP TABLE IF EXISTS `role`;
@@ -182,14 +173,6 @@ CREATE TABLE `role` (
   `roleDesc` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of role
--- ----------------------------
-INSERT INTO `role` VALUES ('1', '普通用户');
-INSERT INTO `role` VALUES ('2', '代理');
-INSERT INTO `role` VALUES ('3', '管理员');
-INSERT INTO `role` VALUES ('4', '超级管理员');
 
 -- ----------------------------
 -- Table structure for role_resources
@@ -203,10 +186,6 @@ CREATE TABLE `role_resources` (
   CONSTRAINT `role_resources_ibfk_1` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`),
   CONSTRAINT `role_resources_ibfk_2` FOREIGN KEY (`resourcesId`) REFERENCES `resources` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of role_resources
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for super_manager
@@ -234,35 +213,28 @@ CREATE TABLE `super_manager` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of super_manager
--- ----------------------------
-
--- ----------------------------
 -- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id` int(12) NOT NULL COMMENT '用户旅客id',
+  `id` int(12) NOT NULL AUTO_INCREMENT COMMENT '用户旅客id',
   `addressId` int(12) DEFAULT NULL,
   `username` varchar(50) NOT NULL COMMENT '用户名',
   `password` varchar(255) NOT NULL,
   `name` varchar(255) DEFAULT NULL COMMENT '姓名',
   `phone` varchar(20) DEFAULT NULL COMMENT '电话号码',
-  `register_time` datetime NOT NULL COMMENT '注册时间',
+  `register_time` datetime DEFAULT NULL COMMENT '注册时间',
   `last_time` datetime DEFAULT NULL COMMENT '用户最近访问时间',
   `sex` int(1) DEFAULT NULL COMMENT '0男，1女',
   `age` int(3) DEFAULT NULL COMMENT '年龄',
   `idCard` varchar(30) DEFAULT NULL COMMENT '身份证信息',
   `enable` int(1) DEFAULT '0' COMMENT '账户是否能用',
+  `province` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '省份',
   PRIMARY KEY (`id`),
   KEY `addressId` (`addressId`),
   KEY `id` (`id`),
-  CONSTRAINT `addressId` FOREIGN KEY (`addressId`) REFERENCES `address` (`addressid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of user
--- ----------------------------
+  CONSTRAINT `addressId` FOREIGN KEY (`addressId`) REFERENCES `region` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=500002 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for user_role
@@ -273,27 +245,18 @@ CREATE TABLE `user_role` (
   `roleId` int(11) DEFAULT NULL,
   KEY `userId` (`userId`),
   KEY `roleId` (`roleId`),
-  CONSTRAINT `user_role_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`id`),
   CONSTRAINT `user_role_ibfk_2` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of user_role
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for ways
 -- ----------------------------
 DROP TABLE IF EXISTS `ways`;
 CREATE TABLE `ways` (
-  `id` int(11) NOT NULL,
-  `startPlace` varchar(100) NOT NULL COMMENT '起始地',
-  `endPlace` varchar(100) NOT NULL COMMENT '目的地',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `startPlace` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '起始地',
+  `endPlace` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '目的地',
   `amount` double(255,0) NOT NULL,
-  `way` varchar(30) NOT NULL COMMENT '出行方式，如飞机',
+  `way` int(1) NOT NULL COMMENT '0飞机，1火车，2汽车，3自驾，4其它',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of ways
--- ----------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=519831 DEFAULT CHARSET=utf8;
