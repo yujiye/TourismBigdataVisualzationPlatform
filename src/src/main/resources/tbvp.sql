@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80011
 File Encoding         : 65001
 
-Date: 2018-08-30 10:08:13
+Date: 2018-08-31 09:38:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -83,7 +83,7 @@ CREATE TABLE `buyrecord` (
 -- ----------------------------
 DROP TABLE IF EXISTS `manager`;
 CREATE TABLE `manager` (
-  `id` varchar(50) NOT NULL COMMENT 'id',
+  `id` int(12) NOT NULL AUTO_INCREMENT COMMENT 'id',
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role` int(1) NOT NULL COMMENT '0表示管理员，1表示用户',
@@ -96,7 +96,7 @@ CREATE TABLE `manager` (
   `last_time` datetime DEFAULT NULL COMMENT '用户最近访问时间',
   `idCard` varchar(30) DEFAULT NULL COMMENT '身份证号码',
   `produceId` int(12) DEFAULT NULL COMMENT '产品信息id',
-  `enble` int(1) unsigned zerofill NOT NULL COMMENT '是否有效',
+  `enable` int(1) unsigned zerofill NOT NULL COMMENT '是否有效',
   PRIMARY KEY (`id`),
   KEY `addressId` (`addressId`),
   KEY `produceId` (`produceId`),

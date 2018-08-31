@@ -74,7 +74,7 @@ public class Manager implements Serializable {
     /**
      * 是否有效
      */
-    private Integer enble;
+    private Integer enable;
 
     /**
      * 获取id
@@ -307,8 +307,8 @@ public class Manager implements Serializable {
      *
      * @return enble - 是否有效
      */
-    public Integer getEnble() {
-        return enble;
+    public Integer getaEnble() {
+        return enable;
     }
 
     /**
@@ -316,7 +316,7 @@ public class Manager implements Serializable {
      *
      * @param enble 是否有效
      */
-    public void setEnble(Integer enble) {
-        this.enble = enble;
+    public void setEnable(Integer enble) {
+        this.enable = enble;
     }
 }
