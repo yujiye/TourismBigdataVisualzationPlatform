@@ -20,4 +20,9 @@
     <result column="produceId" property="produceid" jdbcType="INTEGER" />
     <result column="enable" property="enable" jdbcType="INTEGER" />
   </resultMap>
+  <select id="selectByUsername" resultType="com.gxu.tbvp.domain.Manager" parameterType="java.lang.String">
+      	SELECT *
+		FROM manager
+		where username = #{username,jdbcType=BIGINT}
+  </select>
 </mapper>

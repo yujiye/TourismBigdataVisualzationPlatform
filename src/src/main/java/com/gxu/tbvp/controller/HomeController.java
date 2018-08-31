@@ -2,6 +2,7 @@ package com.gxu.tbvp.controller;
 
 
 
+import com.gxu.tbvp.domain.Manager;
 import com.gxu.tbvp.domain.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -48,16 +49,16 @@ public class HomeController {
     //ending
 
     @RequestMapping(value="/login",method=RequestMethod.POST)
-    public String login(HttpServletRequest request, User user, Model model){
-        if (StringUtils.isEmpty(user.getUsername()) || StringUtils.isEmpty(user.getPassword())) {
+    public String login(HttpServletRequest request, Manager manager, Model model){
+        if (StringUtils.isEmpty(manager.getUsername()) || StringUtils.isEmpty(manager.getPassword())) {
             request.setAttribute("msg", "用户名或密码不能为空！");
             return "login";
         }
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token=new UsernamePasswordToken(user.getUsername(),user.getPassword());
+        UsernamePasswordToken token=new UsernamePasswordToken(manager.getUsername(),manager.getPassword());
         try {
             subject.login(token);
-            return "redirect:usersPage";
+            return "index";
         }catch (LockedAccountException lae) {
             token.clear();
             request.setAttribute("msg", "用户已经被锁定不能登录，请与管理员联系！");

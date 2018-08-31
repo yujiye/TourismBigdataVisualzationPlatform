@@ -1,7 +1,9 @@
 package com.gxu.tbvp.shiro;
 
+import com.gxu.tbvp.domain.Manager;
 import com.gxu.tbvp.domain.Resources;
 import com.gxu.tbvp.domain.User;
+import com.gxu.tbvp.service.ManagerService;
 import com.gxu.tbvp.service.ResourcesService;
 import com.gxu.tbvp.service.UserService;
 import org.apache.shiro.SecurityUtils;
@@ -30,6 +32,9 @@ public class MyShiroRealm extends AuthorizingRealm {
     private UserService userService;
 
     @Resource
+    private ManagerService managerService;
+
+    @Resource
     private ResourcesService resourcesService;
 
     @Autowired
@@ -38,9 +43,9 @@ public class MyShiroRealm extends AuthorizingRealm {
     //授权
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        User user= (User) SecurityUtils.getSubject().getPrincipal();//User{id=1, username='admin', password='3ef7164d1f6167cb9f2658c07d3c2f0a', enable=1}
+        Manager manager= (Manager) SecurityUtils.getSubject().getPrincipal();//User{id=1, username='admin', password='3ef7164d1f6167cb9f2658c07d3c2f0a', enable=1}
         Map<String,Object> map = new HashMap<String,Object>();
-        map.put("userid",user.getId());
+        map.put("managerid",manager.getId());
         List<Resources> resourcesList = resourcesService.loadUserResources(map);
         // 权限信息对象info,用来存放查出的用户的所有的角色（role）及权限（permission）
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
@@ -55,21 +60,21 @@ public class MyShiroRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         //获取用户的输入的账号.
         String username = (String)token.getPrincipal();
-        User user = userService.selectByUsername(username);
-        if(user==null) throw new UnknownAccountException();
-        if (0==user.getEnable()) {
+        Manager manager =managerService.selectByUsername(username);
+        if(manager==null) throw new UnknownAccountException();
+        if (0==manager.getEnable()) {
             throw new LockedAccountException(); // 帐号锁定
         }
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                user, //用户
-                user.getPassword(), //密码
+                manager, //用户
+                manager.getPassword(), //密码
                 ByteSource.Util.bytes(username),
                 getName()  //realm name
         );
         // 当验证都通过后，把用户信息放在session里
         Session session = SecurityUtils.getSubject().getSession();
-        session.setAttribute("userSession", user);
-        session.setAttribute("userSessionId", user.getId());
+        session.setAttribute("managerSession", manager);
+        session.setAttribute("managerSessionId", manager.getId());
         return authenticationInfo;
     }
 

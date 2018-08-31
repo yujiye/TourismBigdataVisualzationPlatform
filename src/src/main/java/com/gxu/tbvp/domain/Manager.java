@@ -305,16 +305,16 @@ public class Manager implements Serializable {
     /**
      * 获取是否有效
      *
-     * @return enble - 是否有效
+     * @return enable - 是否有效
      */
-    public Integer getaEnble() {
+    public Integer getEnable() {
         return enable;
     }
 
     /**
      * 设置是否有效
      *
-     * @param enble 是否有效
+     * @param enable 是否有效
      */
     public void setEnable(Integer enble) {
         this.enable = enble;
