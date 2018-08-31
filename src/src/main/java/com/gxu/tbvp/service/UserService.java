@@ -16,5 +16,5 @@ public interface UserService extends IService<User>{
 
     int insertBach(List<User> userList);
 
-    int countSex(User user);
+    int countSex(int userSex);
 }

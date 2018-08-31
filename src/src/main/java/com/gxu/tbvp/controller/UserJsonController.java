@@ -17,11 +17,12 @@ public class UserJsonController {
     private UserService userService;
 
     @RequestMapping("/getSexJson")
-    public SelfJSONResult getSexJson() {
-        User user =new User();
-        user.setProvince("广西");
-        Map<String,String> sexMap = new HashMap<String, String>();
-        int ui = userService.countSex(user);
-        return SelfJSONResult.ok(ui);
+    public Map getSexJson() {
+        int countGirl = userService.countSex(1);
+        int countBoy = userService.countSex(0);
+        Map sexMap = new HashMap();
+        sexMap.put("boy", countBoy);
+        sexMap.put("girl", countGirl);
+        return sexMap;
     }
 }

@@ -88,8 +88,11 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
     }
 
     @Override
-    public int countSex(User user) {
-        int temp = userMapper.selectCountByExample(user);
-        return temp;
+    public int countSex(int userSex) {
+        Example example = new Example(User.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("sex",userSex);
+        int count = userMapper.selectCountByExample(example);
+        return count;
     }
 }
