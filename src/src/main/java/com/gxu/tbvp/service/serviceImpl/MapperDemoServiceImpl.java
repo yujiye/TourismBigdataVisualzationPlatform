@@ -15,7 +15,6 @@ public class MapperDemoServiceImpl implements MapperDemoService {
 
     @Override
     public void saveMapperDemo(Mapperdemo mapperdemo) {
-
         mapperdemoMapper.insert(mapperdemo);
     }
 }
